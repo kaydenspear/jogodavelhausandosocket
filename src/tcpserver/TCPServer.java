@@ -61,6 +61,7 @@ public class TCPServer {
         @Override
         public void run(){
             int linha,coluna;
+            velha=new Tabuleiro();
             do{
                 try {
                     System.out.println("Thread:Aguardando Jogada");
@@ -74,7 +75,7 @@ public class TCPServer {
                     linha = scan.nextInt();
                     System.out.println("Thread:Sua Coluna?"+'\n');
                     coluna = scan.nextInt();
-                    }while(velha.jogada(linha,coluna));
+                    }while(velha.jogada(linha,coluna,'x'));
                     System.out.println("Thread:Mandando Jogada");
                     out.writeObject(velha);
                 } catch (IOException ex) {
