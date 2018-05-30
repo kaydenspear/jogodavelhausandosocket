@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/1545-6%20IRON%20V4/Documents/NetBeansProjects/jogodavelhasocket/src/jogo/Tabuleiro.java</file>
+            <file>file:/C:/Users/1545-6%20IRON%20V4/Documents/NetBeansProjects/jogodavelhausandosocket/src/tcpclient/TCPClient.java</file>
+            <file>file:/C:/Users/1545-6%20IRON%20V4/Documents/NetBeansProjects/jogodavelhausandosocket/src/jogo/Tabuleiro.java</file>
+            <file>file:/C:/Users/1545-6%20IRON%20V4/Documents/NetBeansProjects/jogodavelhausandosocket/src/tcpserver/TCPServer.java</file>
         </group>
     </open-files>
 </project-private>

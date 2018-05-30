@@ -47,12 +47,12 @@ public class TCPServer {
         public Connection(Socket client){
             this.client = client;
             try {
-                this.in = new ObjectInputStream(client.getInputStream());
+                this.out = new ObjectOutputStream(client.getOutputStream());
             } catch (IOException ex) {
                 Logger.getLogger(TCPServer.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
-                this.out = new ObjectOutputStream(client.getOutputStream());
+                this.in = new ObjectInputStream(client.getInputStream());
             } catch (IOException ex) {
                 Logger.getLogger(TCPServer.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -62,28 +62,36 @@ public class TCPServer {
         public void run(){
             int linha,coluna;
             velha=new Tabuleiro();
+            Scanner scan = new Scanner(System.in);
             do{
                 try {
+                    velha.printvelha();
                     System.out.println("Thread:Aguardando Jogada");
                     velha = (Tabuleiro) in.readObject();
                     System.out.println("Thread:Jogada Recebida: ");
                     velha.printvelha();
-                    Scanner scan = new Scanner(System.in);
+                    velha.acabou();
+                    if(velha.isTermino()){
+                        break;
+                    }
                     do
                     {
                     System.out.println("Thread:Sua Linha?"+'\n');
                     linha = scan.nextInt();
                     System.out.println("Thread:Sua Coluna?"+'\n');
                     coluna = scan.nextInt();
+                    velha.printvelha();
                     }while(velha.jogada(linha,coluna,'x'));
                     System.out.println("Thread:Mandando Jogada");
                     out.writeObject(velha);
+                    velha.acabou();
                 } catch (IOException ex) {
                     Logger.getLogger(TCPServer.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TCPServer.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }while(!velha.isTermino());
+            System.out.println("Fim de Thread.");
         }
     }
     
